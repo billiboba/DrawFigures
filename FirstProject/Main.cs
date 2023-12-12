@@ -85,7 +85,9 @@ namespace Practic
                             break;
                     }
                 }
-                string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images");
+                string projectDirectory = Directory.GetCurrentDirectory();
+                string directoryPath = Path.Combine(projectDirectory, "Images");
+
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
@@ -97,7 +99,7 @@ namespace Practic
             public static void Main()
             {
                 Scene scene = new Scene();
-                scene.CreateBoxWithFigures("/VisualProects/Practic/TextFile1.txt");
+                scene.CreateBoxWithFigures("Text\\TextFile1.txt");
             }
         }
     }
