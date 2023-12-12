@@ -32,7 +32,7 @@ namespace Practic
                 Bitmap bitmap = new Bitmap(width, height);
                 return bitmap;
             }
-            public void CreateBoxWithFigures(string filepath) 
+            public void CreateBoxWithFigures(string filepath)
             {
                 Bitmap bitmap = CreateBox(filepath);
                 StreamReader sr = new StreamReader(filepath);
@@ -85,14 +85,20 @@ namespace Practic
                             break;
                     }
                 }
-                string outputPath = Path.Combine(Environment.CurrentDirectory, "output.bmp");
+                string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images");
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                string outputPath = Path.Combine(directoryPath, "output.bmp");
                 bitmap.Save(outputPath, ImageFormat.Bmp);
             }
-        }
-        public static void Main()
-        {
-            Scene scene = new Scene();
-            scene.CreateBoxWithFigures("TextFile1.txt");
+            public static void Main()
+            {
+                Scene scene = new Scene();
+                scene.CreateBoxWithFigures("/VisualProects/Practic/TextFile1.txt");
+            }
         }
     }
 }
